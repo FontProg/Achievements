@@ -1,0 +1,1253 @@
+/////*13
+////#include <opencv2/core.hpp>
+////#include <opencv2/imgproc.hpp>
+////#include <opencv2/highgui.hpp>
+////#include <vector>
+////using namespace std;
+////using namespace cv;
+////int main()
+////{
+////    const string path{ "04.png" };
+////    Mat img{ imread(path) };
+////    imshow("image", img);
+////
+////    vector<Mat> channels{};
+////    split(img, channels);
+////    imshow("B", channels.at(0));
+////    imshow("G", channels.at(1));
+////    imshow("R", channels.at(2));
+////    Mat imgRGB;
+////    merge(channels, imgRGB);
+////    waitKey(0);
+////}
+////
+////#include <opencv2/core.hpp>
+////#include <opencv2/imgproc.hpp>
+////#include <opencv2/highgui.hpp>
+////#include<vector>
+////using namespace std;
+////using namespace cv;
+////int main()
+////{
+////    Mat img{ Mat::zeros(Size(256,256),CV_8UC1) };
+////    int colour = -1;
+////
+////    for (int i = 0; i < 256; i++)
+////    {
+////        colour++;
+////        for (int j = 0; j < 256; j++)
+////        {
+////            img.at<uchar>(j, i) = colour;
+////        }
+////    }
+////
+////    imshow("image", img);
+////
+////    vector<int> wr_params;
+////    wr_params.push_back(IMWRITE_JPEG_QUALITY);
+////
+////    wr_params.push_back(10);
+////    imwrite("img1.jpg", img, wr_params);
+////    wr_params.pop_back();
+////
+////    wr_params.push_back(30);
+////    imwrite("img2.jpg", img, wr_params);
+////    wr_params.pop_back();
+////
+////    wr_params.push_back(50);
+////    imwrite("img3.jpg", img, wr_params);
+////    wr_params.pop_back();
+////
+////    wr_params.push_back(100);
+////    imwrite("img4.jpg", img, wr_params);
+////    wr_params.pop_back();
+////    wr_params.pop_back();
+////
+////    wr_params.push_back(IMWRITE_PNG_COMPRESSION);
+////
+////    wr_params.push_back(1);
+////    imwrite("img1.png", img, wr_params);
+////    wr_params.pop_back();
+////
+////    wr_params.push_back(4);
+////    imwrite("img2.png", img, wr_params);
+////    wr_params.pop_back();
+////
+////    wr_params.push_back(6);
+////    imwrite("img3.png", img, wr_params);
+////    wr_params.pop_back();
+////
+////    wr_params.push_back(9);
+////    imwrite("img4.png", img, wr_params);
+////    wr_params.pop_back();
+////
+////    waitKey(0);
+////}
+////*/
+/////*
+////
+////14
+////
+////
+////#include <iostream>
+////#include <opencv2/core.hpp>
+////#include <opencv2/imgproc.hpp>
+////#include <opencv2/highgui.hpp>
+////#include<vector>
+////using namespace std;
+////using namespace cv;
+////int main()
+////{
+////
+////    Mat img1(500, 500, CV_8UC3, Scalar(255, 161, 55));
+////
+////    int y;
+////    y = 0.299 * 55 + 0.587 * 161 + 0.114 * 255;
+////    Mat img(500, 500, CV_8UC3, Scalar(y, y, y));
+////    circle(img, Point(250, 250), 100, Scalar(0, 69, 255), FILLED);
+////
+////    rectangle(img, Point(130, 210), Point(370, 290),Scalar(0, 255, 0), 3);
+////
+////    line(img, Point(130, 210), Point(370, 290), Scalar(255, 255, 255), 10);
+////
+////    ellipse(img, Point(70, 80), Size(40, 70), 40, 0, 360, Scalar(255, 255, 255), 1);
+////
+////    vector<Point> point;
+////    point.push_back(Point(163, 146));
+////    point.push_back(Point(100, 148));
+////    point.push_back(Point(100, 110));
+////    point.push_back(Point(139, 110));
+////    fillConvexPoly(img, point,Scalar(255, 0, 78), LINE_8, 0);
+////
+////    vector<Point> point1;
+////    point1.push_back(Point(456, 456));
+////    point1.push_back(Point(478, 378));
+////    point1.push_back(Point(289, 290));
+////    polylines(img, point1, 0, Scalar(0, 89, 190), 8, LINE_8, 0);
+////
+////    vector<Point> point3;
+////    point3.push_back(Point(203, 186));
+////    point3.push_back(Point(140, 188));
+////    point3.push_back(Point(140, 150));
+////    point3.push_back(Point(179, 150));
+////
+////    vector<Point> point4;
+////    point4.push_back(Point(323, 306));
+////    point4.push_back(Point(260, 308));
+////    point4.push_back(Point(260, 270));
+////    point4.push_back(Point(299, 270));
+////
+////    vector<vector<Point>>pes;
+////    pes.push_back(point3);
+////    pes.push_back(point4);
+////
+////    fillPoly(img,pes ,  Scalar (233,145,66), LINE_8, 0, Point(10,10) );
+////    putText(img, "circle", Point(250, 250), FONT_HERSHEY_DUPLEX, 0.75, Scalar(16, 69, 0), 2);
+////    putText(img, "rectangle", Point(190, 180), FONT_HERSHEY_DUPLEX, 0.75, Scalar(16, 69, 0), 2);
+////    putText(img, "line", Point(130, 210), FONT_HERSHEY_DUPLEX, 0.75, Scalar(16, 69, 0), 2);
+////    putText(img, "ellipse", Point(70, 80), FONT_HERSHEY_DUPLEX, 0.75, Scalar(16, 69, 0), 2);
+////    putText(img, " fillConvexPoly", Point(163, 146), FONT_HERSHEY_DUPLEX, 0.75, Scalar(16, 69, 0), 2);
+////    putText(img, " fillPoly", Point(140, 188), FONT_HERSHEY_DUPLEX, 0.75, Scalar(16, 69, 0), 2);
+////    putText(img, "fillPoly", Point(260, 308), FONT_HERSHEY_DUPLEX, 0.75, Scalar(16, 69, 0), 2);
+////    putText(img, " polylines", Point(289, 290), FONT_HERSHEY_DUPLEX, 0.75, Scalar(16, 69, 0), 2);
+////
+////
+////
+////    Mat img4;
+////    Mat img5;
+////    Mat img6;
+////    Mat img7;
+////    Mat img8;
+////    Mat img9;
+////    Mat img10;
+////    Mat img11;
+////    Mat img12;
+////    Mat img13;
+////
+////
+////
+////    resize(img, img4, Size(640, 480));
+////    vector<int> wr_params;
+////    wr_params.push_back(IMWRITE_JPEG_QUALITY);
+////    wr_params.push_back(10);
+////    imwrite("img44.png", img4, wr_params);
+////    imshow("image111", img);
+////    imshow("image4", img4);
+////    resize(img, img5, Size(),2, 2);
+////    imwrite("img55.png", img4, wr_params);
+////    resize(img, img6, Size(), 1.5, 1.5);
+////    imwrite("img66.png", img4, wr_params);
+////    resize(img, img7, Size(), 1.5, 2);
+////    imwrite("img77.png", img4, wr_params);
+////    resize(img, img8, Size(), 2, 1.5);
+////    imwrite("img88.png", img4, wr_params);
+////    resize(img, img9, Size(), 1.33, 1.33);
+////    imwrite("img99.png", img4, wr_params);
+////    resize(img, img10, Size(), 1.4, 2);
+////    imwrite("img100.png", img4, wr_params);
+////    resize(img, img11, Size(), 1.7, 2);
+////    imwrite("img1111.png", img4, wr_params);
+////    resize(img, img12, Size(), 2, 1.7);
+////    imwrite("img1212.png", img4, wr_params);
+////    resize(img, img13, Size(), 1.7, 1.33);
+////    imwrite("img1313.png", img4, wr_params);
+////    Mat img41;
+////    Mat img42;
+////    Mat img43;
+////    rotate(img4, img41, ROTATE_90_CLOCKWISE);
+////    rotate(img4, img42, ROTATE_180);
+////    rotate(img42, img43, ROTATE_90_CLOCKWISE);
+////    imwrite("img411.png", img41, wr_params);
+////    imwrite("img422.png", img42, wr_params);
+////    imwrite("img433.png", img43, wr_params);
+////    imshow("image41", img41);
+////    imshow("image42", img42);
+////    imshow("image43", img43);
+////    waitKey(0);
+////}
+////*/
+////
+////
+/////*
+////#include <iostream>
+////#include <opencv2/core.hpp>
+////#include <opencv2/imgproc.hpp>
+////#include <opencv2/highgui.hpp>
+////#include<vector>
+////#include<string>
+////using namespace std;
+////using namespace cv;
+////int main()
+////{
+////
+////    int k = 11;
+////    Mat img(200, 200, CV_8UC1, Scalar(0));
+////    int wk = 0, wl = 20;
+////    //rectangle(img, Point(0, 0), Point(40, 20), Scalar(1), 0);
+////    do
+////    {   string a;
+////        cin >> a;
+////        if (wk >= 180 and a.size()>1)
+////        {
+////            wl += 20;
+////            wk = 0;
+////        }
+////        if (a.size() == 1)
+////        {
+////            putText(img, a, Point(wk, wl), FONT_HERSHEY_SIMPLEX, 0.7, Scalar(255), 1, LINE_8, false);
+////
+////            wk += 20;
+////        }
+////        if (a.size() == 2)
+////        {
+////            putText(img, a, Point(wk, wl), FONT_HERSHEY_SIMPLEX, 0.7, Scalar(255), 1, LINE_8, false);
+////
+////            wk += 40;
+////        }
+////        if (a.size() == 3)
+////        {
+////            putText(img, a, Point(wk, wl), FONT_HERSHEY_SIMPLEX, 0.7, Scalar(255), 1, LINE_8, false);
+////
+////            wk += 60;
+////        }
+////        if (wk >= 200)
+////        {
+////            wl += 20;
+////            wk = 0;
+////        }
+////        k--;
+////    } while (wl <= 220 and wk <= 200 and k >0);
+////    imshow("image", img);
+////    waitKey(0);
+////}
+////*/
+/////*5
+////#include <iostream>
+////#include <opencv2/core.hpp>
+////#include <opencv2/imgproc.hpp>
+////#include <opencv2/highgui.hpp>
+////#include<vector>
+////#include<string>
+////using namespace std;
+////using namespace cv;
+////int main()
+////{
+////
+////
+////    Mat img(400, 1020, CV_8UC1, Scalar(0));
+////
+////    int colour = -1;
+////
+////    for (int i = 0; i < 1020; i++)
+////    {
+////        if(i%4==0)
+////        colour++;
+////        for (int j = 0; j < 400; j++)
+////        {
+////            img.at<uchar>(j, i) = colour;
+////        }
+////    }
+////    imshow("image", img);
+////    waitKey(0);
+////
+////    vector<int> wr_params;
+////    wr_params.push_back(IMWRITE_JPEG_QUALITY);
+////    wr_params.push_back(10);
+////    imwrite("img011.jpg", img, wr_params);
+////    wr_params.pop_back();
+////
+////    wr_params.push_back(30);
+////    imwrite("img012.jpg", img, wr_params);
+////    wr_params.pop_back();
+////
+////    wr_params.push_back(50);
+////    imwrite("img013.jpg", img, wr_params);
+////    wr_params.pop_back();
+////
+////    wr_params.push_back(100);
+////    imwrite("img014.jpg", img, wr_params);
+////    wr_params.pop_back();
+////
+////    wr_params.pop_back();
+////    wr_params.pop_back();
+////
+////    wr_params.push_back(IMWRITE_PNG_COMPRESSION);
+////    wr_params.push_back(1);
+////    imwrite("img111.png", img, wr_params);
+////    wr_params.pop_back();
+////
+////    wr_params.push_back(4);
+////    imwrite("img112.png", img, wr_params);
+////    wr_params.pop_back();
+////
+////    wr_params.push_back(8);
+////    imwrite("img113.png", img, wr_params);
+////    wr_params.pop_back();
+////
+////    wr_params.push_back(9);
+////    imwrite("img114.png", img, wr_params);
+////    wr_params.pop_back();
+////}
+////*/
+/////*6
+////#include <iostream>
+////#include <opencv2/core.hpp>
+////#include <opencv2/imgproc.hpp>
+////#include <opencv2/highgui.hpp>
+////#include<vector>
+////#include<string>
+////using namespace std;
+////using namespace cv;
+////Mat img, tmpImg;
+////void on_mouse(int EVENT, int x, int y, int flags, void* ustc);
+////int k = 0;
+////int main()
+////{
+////    img = imread("shapes.jpg");
+////    tmpImg = img.clone();
+////    imshow("Paint_img", tmpImg);
+////    setMouseCallback("Paint_img", on_mouse, (void*)(&tmpImg)); // Вызов функции  обратного вызова
+////        waitKey(0);
+////    destroyWindow("Paint_img");
+////
+////}
+////void on_mouse(int EVENT, int x, int y, int flags, void* ustc)
+////{
+////    switch (EVENT)
+////    {
+////    case EVENT_LBUTTONDOWN: // при нажатии левой кнопки,
+////        // считываются начальные координаты мыши и рисуется круг в этой точке на изображении
+////    {
+////        string a;
+////
+////        Point Pre_pt(x, y);
+////        circle(tmpImg, Pre_pt, 1, Scalar(255, 0, 0, 0), FILLED, 0); // круг
+////        a = to_string(k)+": " + "(" + to_string(x) + "," + to_string(y) + ")";
+////        vector<Mat>chanels{};
+////        split(tmpImg, chanels);
+////
+////        cout << k << ": " << a << ", " << "[" << static_cast<int>(chanels.at(0).at<uchar>(x, y)) << ", " << static_cast<int>(chanels.at(1).at<uchar>(x, y)) << ", "
+////          << static_cast<int>(chanels.at(2).at<uchar>(x, y)) << "]" << endl;
+////        putText(tmpImg,a, Point(x, y), FONT_HERSHEY_SIMPLEX, 0.7, Scalar(255), 1, LINE_8, false);
+////        imshow("Paint_img", tmpImg);
+////        k++;
+////        break;
+////    }
+////    }
+////}
+////*/
+/////*
+////#include <iostream>
+////#include <opencv2/core.hpp>
+////#include <opencv2/imgproc.hpp>
+////#include <opencv2/highgui.hpp>
+////#include<vector>
+////#include<string>
+////using namespace std;
+////using namespace cv;
+////
+////Mat img, tmpImg;
+////vector <int> b;
+////
+////void on_mouse(int EVENT, int x, int y, int flags, void* ustc)
+////{
+////
+////
+////    switch (EVENT)
+////    {
+////
+////    case EVENT_LBUTTONDOWN:
+////
+////    {
+////
+////       b.push_back(x);
+////       b.push_back(y);
+////       break;
+////
+////    }
+////    case EVENT_LBUTTONUP:
+////    {
+////
+////
+////            rectangle(tmpImg, Point(b[b.size()-2], b[b.size()-1] ), Point(x, y), Scalar(0, 255, 0), 3);
+////            imshow("Paint_img", tmpImg);
+////
+////
+////
+////
+////        break;
+////    }
+////    }
+////}
+////
+////
+////
+////int main()
+////{
+////    img = imread("shapes.jpg");
+////    tmpImg = img.clone();
+////    imshow("Paint_img", tmpImg);
+////    setMouseCallback("Paint_img", on_mouse, (void*)(&tmpImg)); // Вызов функции  обратного вызова
+////    waitKey(0);
+////    //destroyWindow("Paint_img");
+////
+////}
+////*/
+/////*
+////#include <iostream>
+////#include <opencv2/core.hpp>
+////#include <opencv2/imgproc.hpp>
+////#include <opencv2/highgui.hpp>
+////#include<vector>
+////#include<string>
+////using namespace std;
+////using namespace cv;
+////
+////Mat img, tmpImg;
+////int k = 0;
+////void on_mouse(int EVENT, int x, int y, int flags, void* ustc)
+////{
+////
+////
+////    switch (EVENT)
+////    {
+////
+////    case EVENT_LBUTTONDOWN:
+////
+////    {
+////        k++;
+////        break;
+////
+////    }
+////    case EVENT_MOUSEMOVE:
+////    {
+////
+////        if (k == 1) {
+////            rectangle(tmpImg, Point(x,y), Point(x+5, y+5), Scalar(0, 255, 0), 3);
+////            imshow("Paint_img", tmpImg);
+////        }
+////
+////        break;
+////    }
+////    case EVENT_LBUTTONUP: {
+////        k--;
+////        break;
+////    }
+////    }
+////    cout << k << endl;
+////}
+////
+////
+////
+////int main()
+////{
+////    img = imread("shapes.jpg");
+////    tmpImg = img.clone();
+////    imshow("Paint_img", tmpImg);
+////    setMouseCallback("Paint_img", on_mouse, (void*)(&tmpImg)); // Вызов функции  обратного вызова
+////    waitKey(0);
+////    //destroyWindow("Paint_img");
+////
+////}*/
+/////*7
+////#include <iostream>
+////#include <opencv2/core.hpp>
+////#include <opencv2/imgproc.hpp>
+////#include <opencv2/highgui.hpp>
+////#include<vector>
+////#include<math.h>
+////#include<string>
+////using namespace std;
+////using namespace cv;
+////
+////int k = 0;
+////Mat img,tmpImg,img1;
+////vector<int>b;
+////void on_mouse(int EVENT, int x, int y, int flags, void* ustc)
+////{
+////    switch (EVENT)
+////    {
+////    case EVENT_LBUTTONDOWN: // при нажатии левой кнопки,
+////        // считываются начальные координаты мыши и рисуется круг в этой точке на изображении
+////    {
+////        k++;
+////        string a;
+////
+////        Point Pre_pt(x, y);
+////        b.push_back(x);
+////        b.push_back(y);
+////        circle(tmpImg, Pre_pt, 1, Scalar(255, 0, 0, 0), FILLED, 0); // круг
+////        a = to_string(k) + ": " + "(" + to_string(x) + "," + to_string(y) + ")";
+////        cout << k << ": " << a << endl;
+////        imshow("Paint_img", tmpImg);
+////
+////        break;
+////    }
+////    }
+////}
+////
+////int main()
+////{
+////
+////    img = imread("cart2.jpg");
+////
+////    tmpImg = img.clone();
+////    imshow("Paint_img", tmpImg);
+////    setMouseCallback("Paint_img", on_mouse, (void*)(&tmpImg)); // Вызов функции  обратного вызова
+////   waitKey(10000);
+////
+////
+////    if (k == 4) {
+////
+////        const Point2f src[] = { Point(b[0],b[1]),Point(b[2],b[3]), Point(b[4],b[5]), Point(b[6],b[7])};
+////        const Point2f dst[] = {Point(0,0),Point(static_cast<int>(sqrt(pow((b[2] - b[0]),2) + static_cast<int>(pow((b[3] - b[1]),2)))),0),
+////            Point(0,static_cast<int>(sqrt(pow((b[4] - b[2]),2) + static_cast<int>(pow((b[5] - b[3]),2))))),
+////            Point(static_cast<int>(sqrt(pow((b[2] - b[0]),2) + static_cast<int>(pow((b[3] - b[1]),2)))),
+////                static_cast<int>(sqrt(pow((b[4] - b[2]),2) + static_cast<int>(pow((b[5] - b[3]),2)))))};
+////
+////
+////        Mat r = getPerspectiveTransform(src, dst);
+////        warpPerspective(img, img1,r,Size(static_cast<int>(sqrt(pow((b[2] - b[0]), 2) + static_cast<int>(pow((b[3] - b[1]), 2)))),
+////            static_cast<int>(sqrt(pow((b[4] - b[2]), 2) + static_cast<int>(pow((b[5] - b[3]), 2))))));
+////        Mat img4;
+////        vector<int> wr_params;
+////        wr_params.push_back(IMWRITE_JPEG_QUALITY);
+////        wr_params.push_back(10);
+////
+////        resize(img1, img4, Size(300, 450));
+////        imwrite("вова.png", img4, wr_params);
+////        imshow("Paint_img", img);
+////        imshow("Paint_img1", img4);
+////        waitKey(0);
+////    }
+////}
+////*/
+////
+//////#include <iostream>
+//////#include <opencv2/core.hpp>
+//////#include <opencv2/imgproc.hpp>
+//////#include <opencv2/highgui.hpp>
+//////#include<vector>
+//////#include<math.h>
+//////#include<string>
+//////
+//////using namespace std;
+//////using namespace cv;
+//////
+//////int main()
+//////{
+//////    Mat img,img1;
+//////    img = imread("cartin.jpg");
+//////    vector<int> wr_params;
+//////       wr_params.push_back(IMWRITE_JPEG_QUALITY);
+//////       wr_params.push_back(10);
+//////    int y{ 3};
+//////    namedWindow("Trackbars");
+//////    createTrackbar("Bright", "Trackbars", &y, 55);
+//////    while (true)
+//////    {
+//////       if (y < 3) break;
+//////       blur(img, img1, Size(y, y), Point(-1, -1), BORDER_DEFAULT);
+//////       if(y==3)
+//////       imwrite("imgk3.png", img1, wr_params);
+//////       if(y==5)
+//////       imwrite("imgk5.png", img1, wr_params);
+//////       if(y==15)
+//////           imwrite("imgk15.png", img1, wr_params);
+//////       if(y==43)
+//////           imwrite("imgk43.png", img1, wr_params);
+//////       imshow("Trackbars", img1);
+//////       waitKey(1);
+//////    }
+//////}
+//////#include <iostream>
+//////#include <opencv2/core.hpp>
+//////#include <opencv2/imgproc.hpp>
+//////#include <opencv2/highgui.hpp>
+//////#include<vector>
+//////#include<math.h>
+//////#include<string>
+//////
+//////using namespace std;
+//////using namespace cv;
+//////
+//////int main()
+//////{
+//////    Mat img, img1;
+//////    img = imread("cartin.jpg");
+//////    vector<int> wr_params;
+//////    wr_params.push_back(IMWRITE_JPEG_QUALITY);
+//////    wr_params.push_back(10);
+//////    int y{ 0 };
+//////    imshow("kkk", img);
+//////    namedWindow("Trackbars");
+//////    createTrackbar("Bright", "Trackbars", &y, 55,0);
+//////    while (true)
+//////    {
+//////        if (y % 2 == 0) y=y+1;
+//////        GaussianBlur(
+//////            img, //входное изображение
+//////            img1, // выходное изображение
+//////            Size(y, y), // размер маски
+//////            static_cast<double>(((((static_cast<double>(y) - 1) - 1) / 2) * 0.3) + 0.8), // полуширина по оси х
+//////            static_cast<double>(((((static_cast<double>(y) - 1) - 1) / 2) * 0.3) + 0.8), // полуширина по оси у
+//////            BORDER_DEFAULT // экстраполяция границы
+//////        );
+//////                   imwrite("imgg3.png", img1, wr_params);
+//////                   if(y==5)
+//////                   imwrite("imgg5.png", img1, wr_params);
+//////                   if(y==15)
+//////                       imwrite("imgg15.png", img1, wr_params);
+//////                   if(y==43)
+//////                       imwrite("imgg43.png", img1, wr_params);
+//////        imshow("Trackbars", img1);
+//////        waitKey(1);
+//////    }
+////// }
+//////
+/////*
+////#include <iostream>
+////#include <opencv2/core.hpp>
+////#include <opencv2/imgproc.hpp>
+////#include <opencv2/highgui.hpp>
+////#include<vector>
+////#include<math.h>
+////#include<string>
+////
+////using namespace std;
+////using namespace cv;
+////
+////int main()
+////{
+////    Mat img, img1,img12;
+////    img = imread("cartin.jpg");
+////    vector<int> wr_params;
+////    wr_params.push_back(IMWRITE_JPEG_QUALITY);
+////    wr_params.push_back(10);
+////
+////    Mat m(3,3, CV_8UC1);
+////
+////    for (int i = 0; i < 3; i++)
+////    {
+////        for (int j = 0; j < 3; j++)
+////        {
+////            if (i == 1 and j == 1)
+////            {
+////                m.at<uchar>(j, i) = 8;
+////            }
+////            else m.at<uchar>(j, i) = 1;
+////        }
+////    }
+////    Mat m1(3, 3, CV_8UC1);
+////    m1.at<uchar>(0, 0) = 0;
+////    m1.at<uchar>(0, 1) = 1;
+////    m1.at<uchar>(0, 2) = 0;
+////    m1.at<uchar>(1, 0) = 1;
+////    m1.at<uchar>(1, 1) = 5;
+////    m1.at<uchar>(1, 2) = 1;
+////    m1.at<uchar>(2, 0) = 0;
+////    m1.at<uchar>(2, 1) =1;
+////    m1.at<uchar>(2, 2) = 0;
+////    imshow("kkk", img);
+////    filter2D(img,img1,-1, m, Point(1,1),0, BORDER_DEFAULT);
+////    filter2D(img, img12, -1, m1, Point(1, 1), 0, BORDER_DEFAULT);
+////    imwrite("imggg11.png", img1, wr_params);
+////     imwrite("imggg12.png", img2, wr_params);
+////        imshow("Trackbars", img1);
+////        imshow("Trackbars1", img12);
+////        waitKey(0);
+////
+////}
+////*/
+//////#include <iostream>
+//////#include <opencv2/core.hpp>
+//////#include <opencv2/imgproc.hpp>
+//////#include <opencv2/highgui.hpp>
+//////#include<vector>
+//////#include<math.h>
+//////#include<string>
+//////
+//////using namespace std;
+//////using namespace cv;
+//////
+//////int main()
+//////{
+//////    Mat img;
+//////
+//////    img = imread("cartin.jpg");
+//////    imshow("img", img);
+//////    Mat img1;
+//////    /*vector<Mat> channels{};
+//////    split(img, channels);
+//////    Mat img1(img.rows, img.cols, CV_8UC1, Scalar(0));
+//////    for (int i = 0; i < img.rows; i++)
+//////    {
+//////        for (int j = 0; j < img.cols; j++)
+//////        {
+//////            img1.at<uchar>(i, j) = 0.299 * static_cast<int>(channels.at(2).at<uchar>(i, j)) + 0.587 * static_cast<int>(channels.at(1).at<uchar>(i, j))
+//////            +0.114 * static_cast<int>(channels.at(0).at<uchar>(i, j));
+//////        }
+//////
+//////    }*/
+//////    cvtColor(img, img1, COLOR_BGR2GRAY);
+//////    imshow("123", img1);
+//////    vector<int> wr_params;
+//////    wr_params.push_back(IMWRITE_JPEG_QUALITY);
+//////    wr_params.push_back(10);
+//////    imwrite("imgg111.png", img1, wr_params);
+//////    Mat img12,img13;
+//////    cvtColor(img, img12, COLOR_YCrCb2BGR);
+//////    imshow("1234", img12);
+//////    imwrite("imgg1112.png", img12, wr_params);
+//////    cvtColor(img, img13, COLOR_BGR2HSV);
+//////    imshow("12345", img13);
+//////    imwrite("imgg1113.png", img13, wr_params);
+//////    waitKey(0);
+//////}
+//////#include <iostream>
+//////#include <opencv2/core.hpp>
+//////#include <opencv2/imgproc.hpp>
+//////#include <opencv2/highgui.hpp>
+//////#include<vector>
+//////#include<math.h>
+//////#include<string>
+//////
+//////using namespace std;
+//////using namespace cv;
+//////
+//////int main()
+//////{
+//////    Mat img,img1;
+//////    img = imread("cartin.jpg");
+//////    cvtColor(img, img1, COLOR_BGR2GRAY);
+//////    imshow("123", img1);
+//////    
+//////    int y{ 0 };
+//////        namedWindow("Trackbars");
+//////        createTrackbar("Bright", "Trackbars", &y, 255);
+//////        while (true)
+//////        { 
+//////            cvtColor(img, img1, COLOR_BGR2GRAY);
+//////            for (int i = 0; i < img1.rows; i++)
+//////                    {
+//////                        for (int j = 0; j < img1.cols; j++)
+//////                        {
+//////                            if (img1.at<uchar>(i, j) >= y)
+//////                                img1.at<uchar>(i, j) = 255;
+//////                            if (img1.at<uchar>(i, j) < y)
+//////                                img1.at<uchar>(i, j) = 0;
+//////                        }
+//////                
+//////                    }
+//////           imshow("Trackbars", img1);
+//////           waitKey(1);
+//////        }
+//////}
+////
+//////#include <iostream>
+//////#include <opencv2/core.hpp>
+//////#include <opencv2/imgproc.hpp>
+//////#include <opencv2/highgui.hpp>
+//////#include<vector>
+//////#include<math.h>
+//////#include<string>
+//////
+//////using namespace std;
+//////using namespace cv;
+//////
+//////int main()
+//////{
+//////    Mat img, img1;
+//////    img = imread("cartin.jpg");
+//////    cvtColor(img, img1, COLOR_YCrCb2BGR);
+//////
+//////    imshow("123", img1);
+//////    
+//////
+//////    namedWindow("Trackbars");
+//////    int q1 = 10, q2 = 55, q3 = 80, q = 90;
+//////
+//////    createTrackbar("q1", "Trackbars", &q1, 255);
+//////    createTrackbar("q2", "Trackbars", &q2, 255);
+//////    createTrackbar("q3", "Trackbars", &q3, 255);
+//////    createTrackbar("q*", "Trackbars", &q, 255);
+//////        
+//////    while (true)
+//////    {
+//////        cvtColor(img, img1, COLOR_YCrCb2BGR);
+//////        vector<Mat> channels{};
+//////        split(img1, channels);
+//////        
+//////        for (int i = 0; i < img1.rows; i++)
+//////        {
+//////
+//////            for (int j = 0; j < img1.cols; j++)
+//////            {
+//////                if(q1==q2)
+//////                    break;
+//////                if (channels.at(0).at<uchar>(i, j) < q1)
+//////                {
+//////                    channels.at(0).at<uchar>(i, j) = q3;
+//////
+//////                }
+//////
+//////                if (static_cast<double>(channels.at(0).at<uchar>(i, j)) > q2) {
+//////                    channels.at(0).at<uchar>(i, j) = q;
+//////
+//////                }
+//////
+//////
+//////                if (channels.at(0).at<uchar>(i, j) <= q2 and channels.at(0).at<uchar>(i, j) >= q1)
+//////                {
+//////                    double k;
+//////                    k = (q1 - q3) / (q2 - q1);
+//////                    channels.at(0).at<uchar>(i, j) = q3 + k * (channels.at(0).at<uchar>(i, j) - q1);
+//////
+//////                }
+//////                
+//////            }
+//////
+//////        }
+//////        merge(channels, img1);
+//////
+//////        imshow("Trackbars", img1);
+//////        Mat img123;
+//////    cvtColor(img1, img123, COLOR_BGR2RGB);
+//////    imshow("RGB", img123);
+//////        
+//////        waitKey(1);
+//////
+//////    }
+//////
+//////}
+//////#include <iostream>
+//////#include <opencv2/core.hpp>
+//////#include <opencv2/imgproc.hpp>
+//////#include <opencv2/highgui.hpp>
+//////#include<vector>
+//////#include<math.h>
+//////#include<string>
+//////
+//////using namespace std;
+//////using namespace cv;
+//////
+//////int main()
+//////{
+//////    Mat img, img1;
+//////        img = imread("cartin.jpg");
+//////        cvtColor(img, img1, COLOR_YCrCb2BGR);
+//////        imshow("123", img1);
+//////        namedWindow("Trackbars");
+//////        int y = 0;
+//////        createTrackbar("q1", "Trackbars", &y, 100);
+//////        while (true)
+//////        {
+//////            y = y / 10;
+//////            cvtColor(img, img1, COLOR_YCrCb2BGR);
+//////            vector<Mat> channels{};
+//////            split(img1, channels);
+//////            for (int i = 0; i < img1.rows; i++)
+//////            {
+//////                for (int j = 0; j < img1.cols; j++)
+//////                {
+//////                    channels.at(0).at<uchar>(i, j) = pow(channels.at(0).at<uchar>(i, j), y);
+//////                }
+//////            }
+//////            merge(channels, img1);
+//////            
+//////                    imshow("Trackbars", img1);
+//////                    Mat img123;
+//////                cvtColor(img1, img123, COLOR_BGR2RGB);
+//////                imshow("RGB", img123);
+//////                    
+//////                    waitKey(1);
+//////         }   
+//////        }
+////
+////#include <iostream>
+////#include <opencv2/core.hpp>
+////#include <opencv2/imgproc.hpp>
+////#include <opencv2/highgui.hpp>
+////#include<vector>
+////#include<math.h>
+////#include<string>
+////
+////using namespace std;
+////using namespace cv;
+////
+////int main()
+////{
+////    Mat img;
+////    img = imread("cartin.jpg");
+////        Mat hist;
+////       
+////        int histSize[1] = { 255 };// т.е. весь диапазон изменения яркости изображения
+////        int channels[1] = { 0 }; // т.к. изображение одноканальное
+////        float hr1[] = { 0,255 }; // диапазон значений яркости 1&lt;=Y&lt;11
+////        const float* ranges[] = { hr1 };
+////        calcHist(&img,1, channels, Mat(), hist, 1, histSize, ranges, true);
+////        //cout <<" img ="<<"\n"<<img<<" \n";
+////        //cout<<"hist ="<<"\n"<<hist<<"\n";
+////        
+////        Mat img1(500, 500, CV_8UC1, Scalar(255));
+////        vector<Point> point1;
+////       
+////        for (int i = 0; i <hist.rows; i++)
+////        {
+////            for (int j = 0; j < hist.cols; j++)
+////            {
+////                int k = 56;
+////                
+////                 point1.push_back(Point(i, i);
+////            }
+////        }
+////        polylines(img1, hist, 0, Scalar(0), 10, LINE_8, 0);
+////        imshow("123", img1);
+////        waitKey(0);
+////    }
+////
+//#include <iostream>
+//#include <opencv2/core.hpp>
+//#include <opencv2/imgproc.hpp>
+//#include <opencv2/highgui.hpp>
+//#include<vector>
+//#include<math.h>
+//#include<string>
+//
+//using namespace std;
+//using namespace cv;
+//class imgI
+//{
+// Mat img1;
+// Mat fon;
+//public:
+// void Cin(const string &s)
+// {
+//  Mat imgs{ imread(s) };
+//  img1 = imgs;
+// }
+// void sozdat_fon(int h,int l,int k)
+// {
+//  Mat imgl;
+//  if(k==3)
+//  imgl.create(l, h,CV_8UC3);
+//  if(k==1)
+//   imgl.create(l, h, CV_8UC1);
+//  fon = imgl;
+// }
+// int get_pix_c(int a, int b)
+// {
+//  return img1.at<uchar>(a, b);
+// }
+// void izm_pix_c(int a, int b, int c)
+// {
+//  img1.at<uchar>(a, b) = c;
+// }
+//};
+//int main()
+//{
+// /*imgI k;
+// int l, h,kl;
+// cin >> l >> h>>kl;
+// const string s{"03.png"};
+// k.Cin(s);
+// k.sozdat_fon(h,l,kl);
+// int a, b;
+// cin >>a >> b;
+// k.get_pix_c(a, b);
+// int c;
+// cin >> c;
+// k.izm_pix_c(a, b, c);*/
+// Mat img(256, 256, CV_8UC3);
+// int k = 0;
+// vector <Mat>chanels{};
+// split(img, chanels);
+// for (int i = 0; i < 256; i++)
+// {
+//  
+//  k ++;
+//  for (int j = 0; j < 256; j++)
+//  {
+//   
+//    if (j <= 85)
+//     chanels.at(0).at<uchar>(j, i) = k;
+//    if (j > 85 and j <= 170)
+//     chanels.at(1).at<uchar>(j, i) =k;
+//    if (j > 170)
+//     chanels.at(2).at<uchar>(j, i) =k;
+//    
+//  }
+// }
+// merge(chanels, img);
+// imshow("img", img);
+// waitKey(0);
+//}
+////////////////////////////////////////////// КУРСОВАЯ РАБОТА //////////////////////////////////////////////////////////////
+#include <iostream>
+#include <opencv2/core.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/highgui.hpp>
+#include<vector>
+#include<string>
+using namespace std;
+using namespace cv;
+Mat img, tmpImg;
+int k = 0;
+int s = 0;
+void on_mouse(int EVENT, int x, int y, int flags, void* ustc)
+{
+    switch (EVENT)
+    {
+    case EVENT_LBUTTONDOWN:
+    {       k++;
+    break;
+
+    }
+    case EVENT_MOUSEMOVE:
+    {if (k == 1) {
+        circle(tmpImg, Point(x, y), s, Scalar(255, 255, 255), FILLED, 0);
+        imshow("Paint_img", tmpImg);
+    }
+    break; }
+    case EVENT_LBUTTONUP: {
+        k--;
+        break; }
+    }
+   
+}
+int main()
+{
+    setlocale(LC_ALL,"rus");
+    int n;
+    cout << "Введите номер фильтра" << endl;
+    cin >> n;
+    switch (n)
+    {
+    case 1:
+    {
+        img = imread("16(c).jpg");
+        tmpImg = img.clone();
+        imshow("Paint_img", tmpImg);
+        createTrackbar("s", "Paint_img", &s, 100);
+        while (true)
+        {
+            setMouseCallback("Paint_img", on_mouse, (void*)(&tmpImg)); // Вызов функции  обратного вызова
+            waitKey(0);
+        }
+        destroyWindow("Paint_img");
+        break;
+    }
+    case 2:
+    {
+        img = imread("16(c).jpg");
+        Mat img1;
+        imshow("123", img);
+        Point x;
+        createTrackbar("s", "123", &s, 100);
+        for (int i = 0; i < img.rows; i++)
+        {
+            for (int j = 0; j < img.cols; j++)
+            {
+                if(s>0)
+                for (int h = 0; h < s*2; h++)
+                {
+                    
+                    img1.at<uchar>(i, j) = (img.at<uchar>(i, j) + img.at<uchar>(i, j + 1) + img.at<uchar>(i + 1, j) + img.at<uchar>(i + 1, j + 1)) / 4;
+                    img1.at<uchar>(i, j + 1) = (img.at<uchar>(i, j + 2) + img.at<uchar>(i + 1, j + 2) + img.at<uchar>(i + 1, j + 3) + img.at<uchar>(i, j + 3)) / 4;
+                    img1.at<uchar>(i + 1, j);
+                    img1.at<uchar>(i + 1, j + 1);
+                }
+            }
+        }
+        imshow("234", img1);
+        break;
+    }
+    case 3:
+    {
+        img = imread("16(cb).jpg");
+        Mat img2=img.clone();
+        namedWindow("Trackbars");
+        vector<Mat> channels{};
+        split(img2, channels);
+        if (channels.size() > 1)
+        {
+            int qr = 10,qg=10,qb=10;
+            createTrackbar("s", "Trackbars", &qr, 200);
+            createTrackbar("s", "Trackbars", &qg, 200);
+            createTrackbar("s", "Trackbars", &qb, 200);
+            while (true)
+            {
+                qr /= 10;
+                qg /= 10;
+                qb /= 10;
+                vector<Mat> channels{};
+                split(img2, channels);
+                imshow("r", channels.at(0));
+                imshow("g", channels.at(1));
+                imshow("b", channels.at(2));
+                for (int i = 0; i < img.rows; i++)
+                {
+                    for (int j = 0; j < img.cols; j++)
+                    {
+                        channels.at(0).at<uchar>(i, j) = pow(channels.at(0).at<uchar>(i, j), qr);/*
+                        channels.at(1).at<uchar>(i, j) = pow(channels.at(1).at<uchar>(i, j), qg);
+                        channels.at(2).at<uchar>(i, j) = pow(channels.at(2).at<uchar>(i, j), qb);*/
+                    }
+                }
+                merge(channels, img2);
+
+                imshow("Trackbars", img2);
+                waitKey(1);
+            }
+
+        }
+        else
+        {
+            int k = 0;
+            createTrackbar("s", "Trackbars", &k, 200);
+            while (true)
+            {
+                vector<Mat> channels{};
+                split(img, channels);
+                Mat img1;
+                for (int i = 0; i < img.rows; i++)
+                {
+                    for (int j = 0; j < img.cols; j++)
+                    {
+                        channels.at(0).at<uchar>(i, j) = pow(channels.at(0).at<uchar>(i, j), s);
+                    }
+                }
+            }
+            merge(channels, img2);
+
+            imshow("Trackbars", img2);
+            waitKey(1);
+            }
+        break;
+        }
+        /*int k=1;
+        createTrackbar("s", "Trackbars", &k, 200);
+        while (true)
+        {Mat img1;
+            k = k / 10;
+            vector<Mat> channels{};
+            split(img2, channels);
+            if (channels.size() > 1)
+            {
+                
+                for (int i = 0; i < img.rows; i++)
+                {
+                    for (int j = 0; j < img.cols; j++)
+                    {
+                        channels.at(0).at<uchar>(i, j) = pow(channels.at(0).at<uchar>(i, j), k);
+                        channels.at(1).at<uchar>(i, j) = pow(channels.at(1).at<uchar>(i, j), k);
+                        channels.at(2).at<uchar>(i, j) = pow(channels.at(2).at<uchar>(i, j), k);
+                    }
+                }
+            }
+            else
+            {
+                vector<Mat> channels{};
+                split(img, channels);
+                Mat img1;
+                for (int i = 0; i < img.rows; i++)
+                {
+                    for (int j = 0; j < img.cols; j++)
+                    {
+                        channels.at(0).at<uchar>(i, j) = pow(channels.at(0).at<uchar>(i, j), s);
+                    }
+                }
+            }
+            merge(channels, img1);
+          
+            imshow("Trackbars", img1);
+            waitKey(1);
+        }*/
+        case 4:
+        {
+            Mat hist;
+            Mat img = imread("16(c).jpg");
+            /*cvtColor(img, img, COLOR_BGR2GRAY);
+            equalizeHist(img, img);*/
+            int channels[] = { 0 };
+            int histSize[] = { 256 };
+            float hr1[] = { 0,255 };
+            const float* ranges[] = { hr1 };
+            calcHist(&img, 1, channels, Mat(), hist, 1, histSize, ranges, true, false);
+            Mat histimg(600, 900, CV_8UC3, Scalar(0, 0, 0));
+            normalize(hist, hist, 0, 255, NORM_MINMAX, -1, Mat());
+            for (int i = 0; i < 256; i++)
+            {
+                line(histimg, Point(i, 600), Point(i, 600 - cvRound(hist.at<float>(i))), Scalar(255, 255, 255), 1, LINE_AA);
+            }
+            imshow("Hist", histimg);
+            imshow("Hist1", img);
+            waitKey(0);
+        }
+        case 5:
+        {
+
+        }
+    }
+   
+
+}
+
+//////        int y = 0;
+//////        createTrackbar("q1", "Trackbars", &y, 100);
+//////        while (true)
+//////        {
+//////            y = y / 10;
+//////            cvtColor(img, img1, COLOR_YCrCb2BGR);
+//////            vector<Mat> channels{};
+//////            split(img1, channels);
+//////            for (int i = 0; i < img1.rows; i++)
+//////            {
+//////                for (int j = 0; j < img1.cols; j++)
+//////                {
+//////                    channels.at(0).at<uchar>(i, j) = pow(channels.at(0).at<uchar>(i, j), y);
+//////                }
+//////            }
+//////            merge(channels, img1);
+//////            
+//////                    imshow("Trackbars", img1);
