@@ -11,16 +11,16 @@ array_img_b=np.array(b)
 local_img=np.zeros( shape: (x,y,3),np.vint8)
 median_size=median_size//2
 for i in range(median_size,x-median_size):
-for j in range(median_size,y-median_size):
-med_pix_r=array_img_r[i-median_size:i+median_size+1,j-median_size:j+median_size+1]
-median_val_r=np.median(med_pix_r)
-array_img_r[i,j]=median_val_r
-med_pix_g=array_img_g[i-median_size:i+median_size+1,j-median_size:j+median_size+1]
-median_val_g=np.median(med_pix_g)
-array_img_g[i,j]=median_val_g
-med_pix_b=array_img_b[i-median_size:i+median_size+1,j-median_size:j+median_size+1]
-median_val_b=np.median(med_pix_b)
-array_img_b[i,j]=median_val_b
+  for j in range(median_size,y-median_size):
+    med_pix_r=array_img_r[i-median_size:i+median_size+1,j-median_size:j+median_size+1]
+    median_val_r=np.median(med_pix_r)
+    array_img_r[i,j]=median_val_r
+    med_pix_g=array_img_g[i-median_size:i+median_size+1,j-median_size:j+median_size+1]
+    median_val_g=np.median(med_pix_g)
+    array_img_g[i,j]=median_val_g
+    med_pix_b=array_img_b[i-median_size:i+median_size+1,j-median_size:j+median_size+1]
+    median_val_b=np.median(med_pix_b)
+    array_img_b[i,j]=median_val_b
 r_img=Image.fromarray(array_img_r)
 g_img=Image.fromarray(array_img_g)
 b_img=Image.fromarray(array_img_b)
